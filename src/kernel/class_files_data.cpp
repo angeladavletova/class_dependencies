@@ -1,7 +1,40 @@
+#include <fstream>
+#include <iostream>
 #include "class_files_data.h"
 
 class_files_data::class_files_data ()
 {
+}
+
+static bool delete_filename_extension (std::string &s)
+{
+  int i = s.length ();
+  while (i >= 0)
+    {
+      if (s[i] == '.')
+        {
+          s.pop_back ();
+          return true;
+        }
+      s.pop_back ();
+      i--;
+    }
+  return false;
+}
+
+static std::string make_file_name_from_path (const std::string &s)
+{
+  int i = 0;
+  std::string name;
+  while (i < s.length ())
+    {
+      if (s[i] != '/')
+        name += s[i];
+      else
+        name.clear ();
+      i++;
+    }
+  return name;
 }
 
 std::string class_files_data::init (std::string header_file_path)
@@ -10,27 +43,15 @@ std::string class_files_data::init (std::string header_file_path)
   std::ifstream file_h (header_file_path);
   if (!file_h)
     return header_file_path + " does not exist\n";
-
-  int i = 0;
-  std::string s;
-  while (i < header_file_path.length ())
-    {
-      if (header_file_path[i] != '/')
-        s += header_file_path[i];
-      else
-        s.clear ();
-      i++;
-    }
   file_h.close();
-  m_files_names.push_back (s);
-  header_file_path.pop_back ();
-  header_file_path += "cpp";
+  m_files_names.push_back (header_file_path);
+
+  delete_filename_extension (header_file_path);
+  header_file_path += ".cpp";
   std::ifstream file_cpp (header_file_path);
   if (file_cpp)
     {
-      s.pop_back ();
-      s += "cpp";
-      m_files_names.push_back (s);
+      m_files_names.push_back (header_file_path);
       file_cpp.close();
     }
   return {};
