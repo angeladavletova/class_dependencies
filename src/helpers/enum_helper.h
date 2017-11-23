@@ -18,3 +18,12 @@ std::vector<EnumT> get_enum_vector ()
     }
   return res;
 }
+
+template <typename EnumT>
+static EnumT string_to_enum (const std::string &str, EnumT default_value = EnumT::END)
+{
+  for (auto e : get_enum_vector<EnumT> ())
+    if (enum_to_string (e) == str)
+      return e;
+  return default_value;
+}

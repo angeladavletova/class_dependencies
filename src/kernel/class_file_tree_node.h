@@ -2,8 +2,6 @@
 
 class class_files_data;
 
-#include "src/pch/pch.h"
-
 class class_file_tree_node
 {
   class_file_tree_node *m_parent;

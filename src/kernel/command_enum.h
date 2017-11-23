@@ -11,5 +11,3 @@ enum class command_enum
 };
 
 std::string enum_to_string (command_enum c);
-
-

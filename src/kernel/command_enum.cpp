@@ -1,5 +1,4 @@
 #include "command_enum.h"
-#include "enum_helper.h"
 
 std::string enum_to_string (command_enum c)
 {

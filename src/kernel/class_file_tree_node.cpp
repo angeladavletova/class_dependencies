@@ -11,13 +11,13 @@ class_file_tree_node::class_file_tree_node (std::unique_ptr<class_files_data> da
 void class_file_tree_node::create_children ()
 {
   m_children.clear ();
-  auto children_data = m_data->create_dependencies ();
-  for (auto &data : children_data)
-    {
-      std::unique_ptr<class_file_tree_node> child;
-      child.reset (new class_file_tree_node (std::move (data), this));
-      m_children.push_back (std::move (child));
-    }
+//  auto children_data = m_data->create_dependencies ();
+//  for (auto &data : children_data)
+//    {
+//      std::unique_ptr<class_file_tree_node> child;
+//      child.reset (new class_file_tree_node (std::move (data), this));
+//      m_children.push_back (std::move (child));
+//    }
 }
 
 void class_file_tree_node::create_subtree ()

@@ -18,7 +18,14 @@ PRECOMPILED_HEADER = src/pch/pch.h
 
 SOURCES +=  src/kernel/main.cpp src/kernel/command_enum.cpp \
     src/kernel/class_files_data.cpp \
-    src/kernel/class_file_tree_node.cpp
-HEADERS += src/kernel/command_enum.h  src/kernel/enum_helper.h \
+    src/kernel/class_file_tree_node.cpp \
+    src/helpers/string_functions.cpp \
+    src/kernel/command_interface.cpp \
+    src/kernel/dependencies_data.cpp
+HEADERS += src/kernel/command_enum.h  src/helpers/enum_helper.h \
     src/kernel/class_files_data.h \
-    src/kernel/class_file_tree_node.h
+    src/kernel/class_file_tree_node.h \
+    src/helpers/string_functions.h \
+    src/kernel/command_interface.h \
+    src/kernel/dependencies_data.h \
+    src/helpers/future_cpp_features.h
