@@ -8,5 +8,4 @@ public:
   ~class_files_data ();
 
   std::string init (std::string header_file_path);
-  std::vector<std::unique_ptr<class_files_data>> create_dependencies ();
 };
